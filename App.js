@@ -82,9 +82,18 @@ export default function App(props) {
     randomizeOrder();
     const selectedId = card.id;
     let updatedCards = [...cards];
-    const index = updatedCards.map(card => card.id).indexOf(selectedId);
+    const index = updatedCards.map(object => object.id).indexOf(selectedId);
     let selectedCard = {...updatedCards[index]};
-    console.log(selectedId);
+    
+    if (score >= highScore && selectedCard.selected === false) {
+      setHighScore(highScore + 1);
+    }
+
+    if (score == 8) {
+      cards.forEach((object)=>{object.selected = false;})
+      console.log(cards)
+    }
+
     if (selectedCard.selected === true){
       setCards(initialCards);
       setScore(0);
@@ -93,9 +102,6 @@ export default function App(props) {
       updatedCards[index] = selectedCard;
       setScore(score + 1);
       setCards(updatedCards);
-      if (highScore <= score) {
-        setHighScore(score + 1);
-      }
     }
 }
 
