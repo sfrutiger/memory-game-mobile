@@ -78,17 +78,17 @@ export default function App(props) {
 
   randomizeOrder();
 
-  function handleCardSelection(e){
+  function handleCardSelection(card){
     randomizeOrder();
-    const selectedId = e.target.id;
+    const selectedId = card.id;
     let updatedCards = [...cards];
     const index = updatedCards.map(card => card.id).indexOf(selectedId);
     let selectedCard = {...updatedCards[index]};
+    console.log(selectedId);
     if (selectedCard.selected === true){
       setCards(initialCards);
       setScore(0);
     } else {
-      /* selectedCard.color = 'white'; */
       selectedCard.selected = true;
       updatedCards[index] = selectedCard;
       setScore(score + 1);
@@ -109,7 +109,7 @@ export default function App(props) {
         key={index}
         id = {card.id}
         color = {card.color} 
-        action = {handleCardSelection}/>;
+        action = {() => handleCardSelection(card)}/>;
       })}
       </View>
       < Score score = {score} highScore = {highScore}/>
@@ -124,7 +124,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  score: {
-    color: 'white'
+  board: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignContent: 'space-between',
+    display: 'flex',
+    width: '90%',
+    aspectRatio: 1,
+    marginTop: '10%',
+    marginBottom: '10%'
   }
 });

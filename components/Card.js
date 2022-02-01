@@ -1,21 +1,17 @@
-import { StyleSheet, View } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 
 function Card(props) {
 
     return (
-      <View style = {styles.card}
+      <TouchableOpacity style = {
+        {backgroundColor: `${props.color}`, 
+        height: '30%',
+        aspectRatio: 1}}
         id = {props.id} 
-        style = {{backgroundColor: `${props.color}`}} 
-        onClick = {props.action}>
-        </View>
+        onPress = {props.action}>
+        {/* <Text>{props.id}</Text> */}
+        </TouchableOpacity>
     );
   }
-
-  const styles = StyleSheet.create({
-    card: {
-      height: '85',
-      width: '85'
-    }
-  });
   
   export default Card;
