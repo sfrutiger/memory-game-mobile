@@ -23,6 +23,9 @@
     },
     "android": {
       "package": "frutiger.memorygame",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-8905729476642330~1750736802"
+      },
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

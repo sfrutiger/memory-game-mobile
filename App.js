@@ -1,8 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
+import { AdmobBanner } from 'expo-ads-admob';
 import Card from './components/Card';
 import Score from './components/Score';
 import Instructions from './components/Instructions';
+
+
+//android banner ad id: ca-app-pub-8905729476642330/2451582567
 
 
 export default function App(props) {
@@ -119,6 +123,10 @@ export default function App(props) {
       })}
       </View>
       < Score score = {score} highScore = {highScore}/>
+      < AdmobBanner
+        bannerSize='banner'
+        adUnitID={ca-app-pub-8905729476642330/2451582567}>
+      </AdmobBanner>
     </View>
   );
 }
