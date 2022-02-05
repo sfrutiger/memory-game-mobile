@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
-import { AdmobBanner } from 'expo-ads-admob';
+import { AdMobBanner } from 'expo-ads-admob';
 import Card from './components/Card';
 import Score from './components/Score';
 import Instructions from './components/Instructions';
@@ -123,10 +123,13 @@ export default function App(props) {
       })}
       </View>
       < Score score = {score} highScore = {highScore}/>
-      < AdmobBanner
-        bannerSize='banner'
-        adUnitID={ca-app-pub-8905729476642330/2451582567}>
-      </AdmobBanner>
+      < AdMobBanner
+        style={styles.banner}
+        bannerSize="fullBanner"
+        adUnitID="ca-app-pub-8905729476642330/2451582567"
+        servePersonalizedAds = {false}
+        >
+      </AdMobBanner>
     </View>
   );
 }
@@ -148,5 +151,9 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     marginTop: '10%',
     marginBottom: '10%'
+  },
+  banner: {
+    position: 'absolute',
+    bottom: 0
   }
 });
