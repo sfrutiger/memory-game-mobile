@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Memory Game",
-    "slug": "memory-game",
+    "name": "Color Memory Game",
+    "slug": "color-memory-game",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,11 +18,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "frutiger.memorygame",
+      "bundleIdentifier": "frutiger.colormemorygame",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "frutiger.memorygame",
+      "package": "frutiger.colormemorygame",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-8905729476642330~1750736802"
       },

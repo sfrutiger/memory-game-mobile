@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import { useState } from 'react';
 import { AdMobBanner } from 'expo-ads-admob';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -85,7 +85,7 @@ export default function App(props) {
 const getData = async () => {  
   try {    
     const jsonValue = await AsyncStorage.getItem('savedHighScore')    
-    setHighScore(jsonValue); 
+    jsonValue != null ? setHighScore(jsonValue) : setHighScore(0);
   } catch(error) {    
     console.log('error retrieving high score'); 
   }
