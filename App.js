@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { useState } from 'react';
 import { AdMobBanner } from 'expo-ads-admob';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from './components/Card';
 import Score from './components/Score';
 import Instructions from './components/Instructions';
-
-
-//android banner ad id: ca-app-pub-8905729476642330/2451582567
 
 
 export default function App(props) {
@@ -73,16 +71,39 @@ export default function App(props) {
 
   const [cards, setCards] = useState(initialCards);
 
+//save highscore to async storage
+  const storeData = async () => {
+    try {
+      const jsonValue = JSON.stringify(score + 1)
+      await AsyncStorage.setItem('savedHighScore', jsonValue)
+    } catch (error) {
+      console.log('error saving high score');
+    }
+  }
+
+//retrieve highschore from async storage
+const getData = async () => {  
+  try {    
+    const jsonValue = await AsyncStorage.getItem('savedHighScore')    
+    setHighScore(jsonValue); 
+  } catch(error) {    
+    console.log('error retrieving high score'); 
+  }
+}
+
+getData();
+
+//initialize board
   function randomizeOrder () {
     cards.forEach(card =>
     card.position = Math.random()
     );
     cards.sort(function(a,b) {return a.position - b.position})
   }
-
   randomizeOrder();
 
-  function handleCardSelection(card){
+//process user input
+  async function handleCardSelection(card){
     randomizeOrder();
     const selectedId = card.id;
     let updatedCards = [...cards];
@@ -90,12 +111,11 @@ export default function App(props) {
     let selectedCard = {...updatedCards[index]};
     
     if (score >= highScore && selectedCard.selected === false) {
-      setHighScore(highScore + 1);
+      storeData();
     }
 
     if (score == 8) {
       cards.forEach((object)=>{object.selected = false;})
-      console.log(cards)
     }
 
     if (selectedCard.selected === true){
@@ -106,12 +126,15 @@ export default function App(props) {
       updatedCards[index] = selectedCard;
       setScore(score + 1);
       setCards(updatedCards);
+      getData();
     }
 }
 
+//generate view
   return (
     <View style={styles.container}>
       {props.children}
+      <StatusBar ></StatusBar>
       < Instructions/>
       <View style={styles.board}>
       {cards.map(function(card, index){
@@ -133,6 +156,9 @@ export default function App(props) {
     </View>
   );
 }
+
+//android banner ad id: ca-app-pub-8905729476642330/2451582567
+//android test banner ad id: ca-app-pub-3940256099942544/6300978111
 
 const styles = StyleSheet.create({
   container: {
