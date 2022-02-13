@@ -17,43 +17,43 @@ export default function App(props) {
     },
     {
       id: '1',
-      color: 'blue',
+      color: 'orange',
       selected: false,
       position: '' 
     },
     {
       id: '2',
-      color: 'green',
-      selected: false,
-      position: '' 
-    },
-    {
-      id: '3',
       color: 'yellow',
       selected: false,
       position: '' 
     },
     {
+      id: '3',
+      color: 'green',
+      selected: false,
+      position: '' 
+    },
+    {
       id: '4',
-      color: 'purple',
+      color: 'blue',
       selected: false,
       position: '' 
     },
     {
       id: '5',
-      color: 'pink',
+      color: 'indigo',
       selected: false,
       position: '' 
     },
     {
       id: '6',
-      color: 'teal',
+      color: 'violet',
       selected: false,
       position: '' 
     },
     {
       id: '7',
-      color: 'orange',
+      color: 'white',
       selected: false,
       position: '' 
     },
