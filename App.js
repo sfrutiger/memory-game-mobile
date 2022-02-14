@@ -163,7 +163,7 @@ getData();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(30, 30, 60);',
+    backgroundColor: '#000033',
     alignItems: 'center',
     justifyContent: 'center',
   },
