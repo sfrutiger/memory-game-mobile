@@ -109,12 +109,14 @@ getData();
     let updatedCards = [...cards];
     const index = updatedCards.map(object => object.id).indexOf(selectedId);
     let selectedCard = {...updatedCards[index]};
+
+    const unselectedNumber = cards.filter((card) => card.selected === false).length
     
     if (score >= highScore && selectedCard.selected === false) {
       storeData();
     }
 
-    if (score == 8) {
+    if (unselectedNumber == 1) {
       cards.forEach((object)=>{object.selected = false;})
     }
 
